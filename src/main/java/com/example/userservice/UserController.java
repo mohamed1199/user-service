@@ -14,20 +14,13 @@ public class UserController {
 
     @GetMapping("/")
     public String getDefault(){
-        return "Hello from User Service - " + getAddress() ;
+        return "Hello from User Service ";
     }
 
     @GetMapping("/users")
     public String getHello(){
-        return "I have 10 users - " +  getAddress() ;
+        return "I have 10 users ";
     }
 
-    public String getAddress(){
-        try (Socket socket = new Socket()) {
-            socket.connect(new InetSocketAddress("google.com", 80));
-            return socket.getLocalAddress().getHostAddress();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
 }
