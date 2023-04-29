@@ -24,7 +24,7 @@ pipeline {
       }
     }
 
-    stage('Docker Build') {
+    stage('Dockerize') {
       steps {
       	sh "docker build -t ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${ECR_REPO_NAME}:${IMAGE_TAG} ."
       }
