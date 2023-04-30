@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-      IMAGE_TAG = "latest"
+      IMAGE_TAG = "v1.0.0"
       ACCOUNT_ID = "847759515844"
       REGION = "us-east-1"
       ECR_REPO_NAME = "user-service"
