@@ -27,6 +27,7 @@ pipeline {
     stage('Dockerize') {
       steps {
       	sh "docker build -t ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${ECR_REPO_NAME}:${IMAGE_TAG} ."
+        sh "docker build -t ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${ECR_REPO_NAME}:latest ."
       }
     }
 
@@ -35,6 +36,7 @@ pipeline {
                 withAWS(credentials: 'aws-access-key-id', region: "${REGION}") {
                  sh "aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com"
                  sh "docker push ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${ECR_REPO_NAME}:${IMAGE_TAG}"
+                 sh "docker push ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${ECR_REPO_NAME}:latest"
                 }
             }
         }
