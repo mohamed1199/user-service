@@ -6,6 +6,8 @@ pipeline {
       ACCOUNT_ID = "847759515844"
       REGION = "us-east-1"
       ECR_REPO_NAME = "user-service"
+      CLUSTER_NAME = "MyCluster"
+      ECS_SERVICE_NAME = "user-service"
     }
 
   stages {
@@ -39,7 +41,14 @@ pipeline {
                  sh "docker push ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${ECR_REPO_NAME}:latest"
                 }
             }
-        }
+      }
 
+      stage('Update ECS Service') {
+            steps {
+                withAWS(credentials: 'aws-access-key-id', region: "${REGION}") {
+                 sh "aws ecs update-service --cluster ${CLUSTER_NAME} --service ${ECS_SERVICE_NAME} --force-new-deployment"
+                }
+            }
+      }
   }
 }

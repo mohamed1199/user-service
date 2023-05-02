@@ -40,7 +40,7 @@ public class UserController {
     @GetMapping("/envs")
     public String getEnvVars(){
         Map<String, String> myMap = new HashMap<>();
-        myMap.put("DATABASE_ENDPOINT",adminServiceEndpoint.toString());
+        myMap.put("ADMIN_SERVICE_ENDPOINT",adminServiceEndpoint.toString());
         myMap.put("DATABASE_ENDPOINT",databaseEndpoint.toString());
         myMap.put("KAFKA_ENDPOINT",kafkaEndpoint.toString());
         return myMap.toString() ;
