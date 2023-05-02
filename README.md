@@ -1,4 +1,4 @@
-## This microservice is belong to the following architecture
+## This microservice is designed to be run on AWS infrastructure, specifically using ECS Fargate, Service Discovery, and a CI/CD pipeline with Jenkins.
 
 ![Alt text](images/arch.png?raw=true "Optional Title")
 
