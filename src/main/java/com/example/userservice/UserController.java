@@ -29,7 +29,7 @@ public class UserController {
 
     @GetMapping("/hello")
     public String getHello(){
-        return "Hello from User Service";
+        return "Hello from User Service - V1.0.0";
     }
 
     @GetMapping("/users")
